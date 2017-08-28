@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"BeautifyRuby",
+		"Better CoffeeScript",
+		"Crystal",
+		"d4m",
+		"Delete Lines",
+		"Dockerfile Syntax Highlighting",
+		"Ecmascript Syntax",
+		"GitGutter",
+		"JSX",
+		"Material Theme",
+		"Package Control",
+		"PackageResourceViewer",
+		"Pretty JSON",
+		"Protobuf Syntax Hightlighting",
+		"Pug",
+		"Ruby Slim",
+		"SublimeLinter",
+		"SublimeLinter-rubocop"
+	]
+}

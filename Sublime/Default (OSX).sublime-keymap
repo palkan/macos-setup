@@ -1,0 +1,8 @@
+[
+  {"keys": ["super+ctrl+w"], "command": "close_all"},
+  {"keys": ["ctrl+d"], "command": "delete_lines"},
+  {"keys": ["super+ctrl+s"], "command": "save_all"},
+  {"keys": ["super+b"], "command": "insert_snippet", "args": { "contents": "binding.pry" }},
+  {"keys": ["shift+super+b"], "command": "insert_snippet", "args": { "contents": "require 'pry-byebug';binding.pry" }},
+  {"keys": ["ctrl+b"], "command": "build"}
+]

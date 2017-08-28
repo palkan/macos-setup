@@ -1,0 +1,4 @@
+{
+  "file_extensions": ["rb", "js", "coffee", "jsx"],
+  "watch_paths": ["/Users/palkan/dev/onboardiq_app"]
+}
