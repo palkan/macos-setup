@@ -1,5 +1,5 @@
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
-export GOPATH=$HOME/lib/go
+export GOPATH=$HOME/dev/golang
 
 export PATH=$PATH:$GOPATH/bin
