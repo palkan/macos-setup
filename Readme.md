@@ -8,3 +8,5 @@
 
 - Install Sublime and add settings/packages.
 
+- Tune OSX https://blog.dekstroza.io/ulimit-shenanigans-on-osx-el-capitan/
+

@@ -1,16 +1,17 @@
 # Docker
 alias dcr='docker-compose run --rm'
+alias dcrs='dcr --service-ports'
+alias dcl='docker-compose logs'
 alias dcu='docker-compose up'
 alias dcs='docker-compose stop'
 alias dstats='docker stats --format "table {{.Name}}:\t{{.MemUsage}}\t{{.CPUPerc}}"'
-
-# Vagrant aliases
-alias vup='vagrant up'
-alias vssh='vagrant ssh'
 
 # Ruby
 alias be='bundle exec'
 
 # Other
 alias aws_deplo='ssh -i ~/.ssh/aws_dev_deplo -l deplo'
-alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+
+# JRuby
+alias djruby='docker run -it --rm --name jruby-runner -v "$PWD":/usr/src/myapp -w /usr/src/myapp jruby:latest jruby'
+alias djruby-up='docker run -it --rm --name jruby-runner -v "$PWD":/usr/src/myapp -w /usr/src/myapp jruby:latest /bin/bash'
