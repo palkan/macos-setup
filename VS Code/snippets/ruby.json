@@ -1,0 +1,23 @@
+{
+  "binding.pry": {
+    "prefix": "bind",
+    "body": [
+      "binding.pry"
+    ],
+    "description": "binding.pry"
+  },
+  "binding.pry (w/require)": {
+    "prefix": "bind",
+    "body": [
+      "require 'pry-byebug'; binding.pry"
+    ],
+    "description": "binding.pry (w/require)"
+  },
+  "frozen tag": {
+    "prefix": "fr",
+    "body": [
+      "# frozen_string_literal: true"
+    ],
+    "description": "Inserts frozen_string_literal tag"
+  }
+}

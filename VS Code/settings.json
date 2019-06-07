@@ -1,0 +1,10 @@
+{
+  "workbench.colorTheme": "Solarized Minimal (dark)",
+  "workbench.editor.showTabs": true,
+  "editor.tabSize": 2,
+  "explorer.confirmDelete": true,
+  "window.zoomLevel": 0,
+  "workbench.startupEditor": "welcomePage",
+  "extensions.ignoreRecommendations": false,
+  "explorer.confirmDragAndDrop": true,
+}

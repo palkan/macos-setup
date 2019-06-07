@@ -1,0 +1,49 @@
+[
+  {
+      "key": "cmd+\\",
+      "command": "workbench.action.terminal.focus"
+  },
+  {
+      "key": "cmd+\\",
+      "command": "workbench.action.focusActiveEditorGroup",
+      "when": "terminalFocus"
+  },
+  {
+      "key": "shift+cmd+]",
+      "command": "workbench.action.terminal.focusNext",
+      "when": "terminalFocus"
+  },
+  {
+      "key": "shift+cmd+[",
+      "command": "workbench.action.terminal.focusPrevious",
+      "when": "terminalFocus"
+  },
+  {
+      "key": "shift+cmd+'",
+      "command": "editor.action.goToDeclaration",
+      "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+      "key": "cmd+N",
+      "command": "workbench.action.terminal.new",
+      "when": "terminalFocus"
+  },
+  {
+      "key": "cmd+shift+W",
+      "command": "workbench.action.terminal.kill",
+      "when": "terminalFocus"
+  },
+  {
+      "key": "shift+cmd+\\",
+      "command": "workbench.files.action.focusFilesExplorer"
+  },
+  {
+      "key": "shift+cmd+\\",
+      "command": "workbench.action.focusActiveEditorGroup",
+      "when": "filesExplorerFocus"
+  },
+  {
+      "key": "cmd+k cmd+j",
+      "command": "workbench.action.toggleMaximizedPanel"
+  }
+]
