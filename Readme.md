@@ -1,6 +1,8 @@
 ## My MacOS configuration
 
-- Install [yadr](https://github.com/skwp/dotfiles)
+- Configure GPG for git: https://github.com/pstadler/keybase-gpg-github
+
+- Install yadr: https://github.com/skwp/dotfiles
 
 - Add  Terminal theme (`Solarized Dark ansi.terminal` file)
 
