@@ -10,7 +10,9 @@ sh -c "`curl -fsSL https://raw.githubusercontent.com/skwp/dotfiles/master/instal
 
 - Add Terminal theme (`Solarized Dark ansi.terminal` file)
 
-- Install Martian Mono: https://github.com/evilmartians/mono 
+- Install Martian Mono: https://github.com/evilmartians/mono
+
+- Install Spaceshipt prompt: https://github.com/spaceship-prompt/spaceship-prompt
 
 - Install Homebrew: https://brew.sh
 
@@ -20,7 +22,7 @@ sh -c "`curl -fsSL https://raw.githubusercontent.com/skwp/dotfiles/master/instal
 
 - Install VS Code and turn on the Settings Sync.
 
-- Install Ruby and Go via Homebrew
+- Install Ruby, Node.js and Go via Homebrew
 
 - Install Docker and Dip
 
