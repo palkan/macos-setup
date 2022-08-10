@@ -1,0 +1,82 @@
+version: '5.0'
+
+compose:
+  files:
+    - ./.dip/docker-compose.base.yml
+    - ./.dip/docker-compose.databases.yml
+    - ./.dip/docker-compose.ruby.yml
+    - ./.dip/docker-compose.node.yml
+    - ./.dip/docker-compose.erlang.yml
+  project_name: shared_dip_env
+
+environment:
+  NPM_CONFIG_PREFIX: /home/node/.npm-global
+
+interaction:
+  ruby: &ruby
+    description: Open Ruby service terminal
+    service: ruby
+    command: /bin/bash
+    subcommands:
+      server:
+        description: Open Ruby service terminal terminal with ports exposed (9292 -> 19292, 3000 -> 13000, 8080 -> 18080)
+        command: /bin/bash
+        compose:
+          run_options: [service-ports]
+  ruby3:
+    <<: *ruby
+    service: ruby3
+  ruby300:
+    <<: *ruby
+    service: ruby300
+  ruby31:
+    <<: *ruby
+    service: ruby31
+  ruby26:
+    <<: *ruby
+    service: ruby26
+  ruby27:
+    <<: *ruby
+    service: ruby27
+  ruby25:
+    <<: *ruby
+    service: ruby25
+  ruby22:
+    <<: *ruby
+    service: ruby22
+  jruby:
+    <<: *ruby
+    service: jruby
+  'ruby:latest':
+    <<: *ruby
+    service: ruby-latest
+  psql:
+    description: Run psql console
+    service: postgres
+    command: psql -h postgres -U postgres
+  createdb:
+    description: Run PostgreSQL createdb command
+    service: postgres
+    command: createdb -h postgres -U postgres
+  dropdb:
+    description: Run PostgreSQL dropdb command
+    service: postgres
+    command: dropdb -h postgres -U postgres
+  'redis-cli':
+    description: Run Redis console
+    service: redis
+    command: redis-cli -h redis
+  node:
+    description: Open Node service terminal
+    service: node
+    command: /bin/bash
+    subcommands:
+      server:
+        description: Open Node service terminal terminal with ports exposed (3001 -> 13001, 3002 -> 13002, 4000 -> 14000, 5000 -> 15000)
+        command: /bin/bash
+        compose:
+          run_options: [service-ports]
+  erl:
+    description: Open Erlang service terminal
+    service: erl
+    command: /bin/bash

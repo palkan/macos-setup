@@ -1,0 +1,38 @@
+version: '2.4'
+
+services:
+  node: &node
+    image: node:14
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - npm_data:${NPM_CONFIG_PREFIX}
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+    environment:
+      NPM_CONFIG_PREFIX: ${NPM_CONFIG_PREFIX}
+      YARN_CACHE_FOLDER: ${NPM_CONFIG_PREFIX}/.yarn-cache
+      YARN_MODULES_FOLDER: ${NPM_CONFIG_PREFIX}/.yarn-project-cache/${PWD}
+      HISTFILE: /usr/local/hist/.bash_history
+      PROMPT_DIRTRIM: 2
+      PS1: '[\W]\! '
+    working_dir: ${PWD}
+    ports:
+      - 13001:3001
+      - 13002:3002
+      - 14000:4000
+      - 15000:5000
+    tmpfs:
+      - /tmp
+
+  # Install Docsify first:
+  #   dip node npm i docsify-cli -g
+  docsify:
+    <<: *node
+    working_dir: ${NPM_CONFIG_PREFIX}/bin
+    command: docsify serve ${PWD}/docs -p 5000 --livereload-port 55729
+    ports:
+      - 5000:5000
+      - 55729:55729
+
+volumes:
+  npm_data:

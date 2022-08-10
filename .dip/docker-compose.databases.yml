@@ -1,0 +1,50 @@
+version: '2.4'
+
+services:
+  postgres:
+    image: postgres:11.7
+    volumes:
+      - history:/usr/local/hist
+      - ./.psqlrc:/root/.psqlrc:ro
+      - postgres:/var/lib/postgresql/data
+    environment:
+      PSQL_HISTFILE: /usr/local/hist/.psql_history
+      POSTGRES_PASSWORD: postgres
+      PGPASSWORD: postgres
+    ports:
+      - 5432
+
+  redis:
+    image: redis:6-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  nats: &nats
+    image: nats:alpine
+    ports:
+      - 4222:4222
+    command: "--cluster_name NATS --cluster nats://0.0.0.0:6222"
+    networks:
+      - nats
+
+  nats-2:
+    <<: *nats
+    command: "--cluster_name NATS --cluster nats://0.0.0.0:6222 --routes nats://nats:6222"
+    ports:
+      - 4223:4222
+
+volumes:
+  postgres:
+  redis:
+
+
+networks:
+  nats:
+    name: nats

@@ -1,0 +1,38 @@
+version: '2.4'
+
+services:
+  erl: &erl
+    image: erlang:23
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - rebar_cache:/rebar_data
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+    environment:
+      REBAR_CACHE_DIR: /rebar_data/.cache
+      REBAR_GLOBAL_CONFIG_DIR: /rebar_data/.config
+      REBAR_BASE_DIR: /rebar_data/.project-cache${PWD}
+      HISTFILE: /usr/local/hist/.bash_history
+      PROMPT_DIRTRIM: 2
+      PS1: '[\W]\! '
+    working_dir: ${PWD}
+    tmpfs:
+      - /tmp
+  livebook:
+    image: livebook/livebook
+    volumes:
+      - livebook:/data
+      - ./.bashrc:/root/.bashrc:ro
+      - history:/usr/local/hist
+    environment:
+      HISTFILE: /usr/local/hist/.bash_history
+      PROMPT_DIRTRIM: 2
+      PS1: '[\W]\! '
+    ports:
+      - 18080:8080
+    tmpfs:
+      - /tmp
+
+volumes:
+  rebar_cache:
+  livebook:

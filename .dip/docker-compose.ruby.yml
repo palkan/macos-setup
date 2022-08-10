@@ -1,0 +1,137 @@
+version: '2.4'
+
+services:
+  ruby: &ruby
+    command: bash
+    image: ruby:2.7.1
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432
+      HISTFILE: /usr/local/hist/.bash_history
+      LANG: C.UTF-8
+      PROMPT_DIRTRIM: 2
+      PS1: '[\W]\! '
+      BUNDLE_GEMFILE: ${BUNDLE_GEMFILE:-Gemfile}
+    working_dir: ${PWD}
+    ports:
+      - 19292:9292
+      - 13000:3000
+      - 18080:8080
+    tmpfs:
+      - /tmp
+
+  ruby3:
+    <<: *ruby
+    image: ruby:3.0
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data3:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  ruby300:
+    <<: *ruby
+    image: ruby:3.0.0
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data3:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  ruby31:
+    <<: *ruby
+    image: ruby:3.1
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data31:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  ruby27:
+    <<: *ruby
+    image: ruby:2.7
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data27:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  ruby26:
+    <<: *ruby
+    image: ruby:2.6
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data26:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  ruby25:
+    <<: *ruby
+    image: ruby:2.5
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data25:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  ruby22:
+    <<: *ruby
+    image: ruby:2.2
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data22:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  jruby:
+    <<: *ruby
+    image: jruby:9.2
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_jruby:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+  ruby-latest:
+    <<: *ruby
+    image: rubocophq/ruby-snapshot:latest
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data_edge:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+
+volumes:
+  bundler_data:
+  bundler_jruby:
+  bundler_data22:
+  bundler_data26:
+  bundler_data25:
+  bundler_data27:
+  bundler_data3:
+  bundler_data31:
+  bundler_data_edge:
